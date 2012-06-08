@@ -3,4 +3,4 @@ MSBuildTasks
 
 Useful tasks for MSBuild
 
-Zonca
+Thomas Zonca
