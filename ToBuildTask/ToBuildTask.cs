@@ -7,6 +7,7 @@ using Microsoft.Build.Framework;
 using System.Collections;
 using System.Xml.Linq;
 using System.IO;
+using Microsoft.Build.BuildEngine;
 
 namespace MSBuildTasks
 {
@@ -34,21 +35,34 @@ namespace MSBuildTasks
         public override bool Execute()
         {
             ArrayList items = new ArrayList();
+            ArrayList configs = new ArrayList();
             
             // ItemSpec holds the filename or path of an Item
-            string metaprojFile = _solution.ItemSpec + ".metaproj";
+            string metaprojFile = _solution.ItemSpec + ".metaproj.filtered";
+
+            var exists = false;
             
             // Check the metaproj file exists
             // otherwise warn it has to be emitted thanks to 'set MSBuildEmitSolution=1'
 
             if (!File.Exists(metaprojFile))
             {
-                Log.LogWarning("The metaproj file " +
-                                metaprojFile + " does not exist. You can emit it"
-                                + " by setting MSBuildEmitSolution to 1 while"
-                                + " calling MsBuild.");
+                metaprojFile = _solution.ItemSpec + ".metaproj";
+
+                if (!File.Exists(metaprojFile))
+                {
+                    Log.LogWarning("The metaproj file " +
+                                    metaprojFile + " does not exist. You can emit it"
+                                    + " by setting MSBuildEmitSolution to 1 while"
+                                    + " calling MsBuild.");
+                }
+                else
+                    exists = true;
             }
             else
+                exists = true;
+            
+            if (exists)
             {
                 try
                 {
@@ -64,9 +78,28 @@ namespace MSBuildTasks
                         if (projectConfiguration
                             .Attribute("BuildProjectInSolution").Value == "True")
                         {
+
+                            Project project = new Project();
                             TaskItem item = new TaskItem();
+
                             item.ItemSpec = projectConfiguration
                                                 .Attribute("AbsolutePath").Value;
+                            
+                            var configAndPlatform = projectConfiguration.Value;
+
+                            if (configAndPlatform == null)
+                                continue;
+
+                            var configSplitted = configAndPlatform.Split('|');
+
+                            if (configSplitted.Length == 0)
+                                continue;
+
+                            project.Load(item.ItemSpec);
+
+                            item.SetMetadata("Configuration", configSplitted[0]);
+                            item.SetMetadata("Platform", configSplitted[1]);
+
                             items.Add(item);
                         }
                     }

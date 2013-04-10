@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SetEnvVarTask", "SetEnvVarT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcludeFilesOfFoldersTask", "ExcludeFilesOfFoldersTask\ExcludeFilesOfFoldersTask.csproj", "{C2B72087-7B42-4C1B-97E9-9A8680759A0E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilesWhichEndWithTask", "FilesWhichEndWithTask\FilesWhichEndWithTask.csproj", "{CD5E9006-AF1F-4B42-A9AF-9847B637449D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiterMetaprojFileTask", "FilterMetaprojFileTask\FiterMetaprojFileTask.csproj", "{E4C58A8A-B2FD-4DE9-BFEF-98A3585A9758}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,14 @@ Global
 		{C2B72087-7B42-4C1B-97E9-9A8680759A0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2B72087-7B42-4C1B-97E9-9A8680759A0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2B72087-7B42-4C1B-97E9-9A8680759A0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD5E9006-AF1F-4B42-A9AF-9847B637449D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD5E9006-AF1F-4B42-A9AF-9847B637449D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD5E9006-AF1F-4B42-A9AF-9847B637449D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD5E9006-AF1F-4B42-A9AF-9847B637449D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4C58A8A-B2FD-4DE9-BFEF-98A3585A9758}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4C58A8A-B2FD-4DE9-BFEF-98A3585A9758}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4C58A8A-B2FD-4DE9-BFEF-98A3585A9758}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4C58A8A-B2FD-4DE9-BFEF-98A3585A9758}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
